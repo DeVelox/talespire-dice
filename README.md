@@ -1,5 +1,5 @@
 # Talespire Dice Relay
-Send Foundry dice roll formula to Talespire
+Send Foundry dice roll formula to Talespire.
 
 #  How to install
 1. Under "Add-on Modules" click "Install Module"
