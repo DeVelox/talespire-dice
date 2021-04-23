@@ -1,7 +1,7 @@
 {
   "name": "talespire-dice",
   "title": "Talespire Dice Relay",
-  "description": "Send Foundry dice roll formula to Talespire.",
+  "description": "Send Foundry dice roll formulas to Talespire.",
   "author": "DeVelox",
   "version": "0.0.1",
   "systems": [
