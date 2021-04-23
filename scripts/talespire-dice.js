@@ -33,7 +33,8 @@ Hooks.on("preCreateChatMessage", (msg) => {
 
 function parseFlavorText(flavor) {
   if (flavor.indexOf("<") > -1) {
-    flavor = $(flavor).text().match("^[^:]*");
+    flavor = flavor.match(">(.+?)<")[1];
+    flavor = flavor.replace(/:/g, "");
   }
   return encodeURI(flavor);
 }
