@@ -18,7 +18,7 @@ Hooks.on("preCreateChatMessage", (msg) => {
     let flavor = msg.flavor ? parseFlavorText(msg.flavor) : "dice";
     let formula = parseRollFormula(JSON.parse(msg.roll).formula);
     if (formula.indexOf("*") > -1) {
-      ChatMessage.create({ content: "<strong>Talespire currently doesn't support multiplication to calculate critical hits. <br> Please roll damage normally and double it.</strong>" });
+      ChatMessage.create({ content: "<strong>Talespire currently doesn't support multiplication to calculate critical hits. <br> Please roll damage normally then double it.</strong>" });
       return false;
     }
     window.open("talespire://dice/" + flavor + ":" + formula)
