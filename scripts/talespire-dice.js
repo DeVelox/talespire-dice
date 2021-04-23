@@ -15,7 +15,7 @@ Hooks.once("init", () => {
 
 Hooks.on("preCreateChatMessage", (msg) => {
   if (msg.roll && game.settings.get("talespire-dice", "rollFoundry") !== 1) {
-    let flavor = parseFlavorText(msg.flavor);
+    let flavor = msg.flavor ? parseFlavorText(msg.flavor) : "dice";
     let formula = parseRollFormula(JSON.parse(msg.roll).formula);
     if (formula.indexOf("*") > -1) {
       ChatMessage.create({ content: "<strong>Talespire currently doesn't support multiplication to calculate critical hits. <br> Please roll damage normally and double it.</strong>" });
@@ -39,11 +39,11 @@ function parseFlavorText(flavor) {
 }
 
 function parseRollFormula(formula) {
-  formula = formula.replace(/[{} ]/g, "");
-  if (formula.indexOf("k") > -1) {
-    formula = formula.replace(/k[hl]/g, "");
+  if (formula.indexOf("2d20k") > -1) {
     formula = formula.replace(/^2/, "1");
     formula = formula + "/" + formula;
   }
+  formula = formula.replace(/[{} ]/g, "");
+  formula = formula.replace(/[dk][hl]/g, "");
   return formula;
 }
