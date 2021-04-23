@@ -1,7 +1,13 @@
 # Talespire Dice Relay
-Send Foundry dice roll formula to Talespire.
+Send Foundry dice roll formulas to Talespire.
 
-#  How to install
+##  Installation
 1. Under "Add-on Modules" click "Install Module"
 2. Paste `https://github.com/DeVelox/talespire-dice/raw/main/module.json` into the "Manfiest URL" field
 3. Click "Install"
+
+## Notes
+- Currently only tested with D&D5e and PF2e game systems.
+- Not compatible with BetterRolls5e or anything other than core Foundry dice rolls.
+- Players can configure the module to roll dice in Talespire, Foundry or both.
+- Talespire currently doesn't support multiplication so for PF2e critical hits you need to roll damage normally then double it.
