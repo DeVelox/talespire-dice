@@ -1,18 +1,30 @@
-Hooks.on("preCreateChatMessage", (msg) => {
-  if (msg.roll && game.settings.get("talespire-dice", "rollFoundry") !== 1) {
-    const flavor = msg.flavor ? parseFlavorText(msg.flavor) : "dice";
-    const formula = parseRollFormula(JSON.parse(msg.roll).formula);
-    if (!formula) {
-      ui.notifications.error("Talespire currently doesn't support multiplication to calculate critical hits. Please roll damage normally then double it.");
-      return false;
-    }
-    window.open("talespire://dice/" + flavor + ":" + formula);
-    if (game.settings.get("talespire-dice", "rollFoundry") == 0) {
-      return false;
-    }
+Hooks.once("ready", () => {
+  if (!(game.modules.has("betterrolls5e") && game.modules.get("betterrolls5e").active)) {
+    Hooks.on("preCreateChatMessage", (msg) => {
+      if (msg.roll && game.settings.get("talespire-dice", "rollFoundry") !== 1) {
+        const flavor = msg.flavor ? parseFlavorText(msg.flavor) : "dice";
+        const formula = parseRollFormula(JSON.parse(msg.roll).formula);
+        if (formula == "crit") {
+          ui.notifications.error("Talespire currently doesn't support multiplication to calculate critical hits. Please roll damage normally then double it.");
+          return false;
+        }
+        if (formula == "nodice") {
+          console.log("No dice roll found.");
+        }
+        else {
+          window.open("talespire://dice/" + flavor + ":" + formula);
+          if (game.settings.get("talespire-dice", "rollFoundry") == 0) {
+            return false;
+          }
+        }
+      }
+      else {
+        console.log("No dice roll found.");
+      }
+    });
   }
   else {
-    console.log("No dice roll found.");
+    ui.notifications.error("Talespire Dice Relay is not compatible with BetterRolls5e.");
   }
 });
 
@@ -41,7 +53,10 @@ function parseFlavorText(flavor) {
 
 function parseRollFormula(formula) {
   if (formula.indexOf("*") > -1) {
-    return false;
+    return "crit";
+  }
+  if (!formula.match(/\d*d\d+/)) {
+    return "nodice";
   }
   if (formula.indexOf("2d20k") > -1) {
     formula = formula.replace(/^2/, "1");

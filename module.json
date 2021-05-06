@@ -3,12 +3,12 @@
   "title": "Talespire Dice Relay",
   "description": "Send Foundry dice roll formulas to Talespire.",
   "author": "DeVelox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "systems": [
     "dnd5e",
     "pf2e"
   ],
-  "minimumCoreVersion": "0.6.0",
+  "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
   "url": "https://github.com/DeVelox/talespire-dice",
   "manifest": "https://github.com/DeVelox/talespire-dice/raw/main/module.json",
