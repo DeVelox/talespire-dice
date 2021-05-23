@@ -12,7 +12,7 @@
   "compatibleCoreVersion": "0.7.9",
   "url": "https://github.com/DeVelox/talespire-dice",
   "manifest": "https://github.com/DeVelox/talespire-dice/raw/main/module.json",
-  "download": "https://github.com/DeVelox/talespire-dice/archive/main.zip",
+  "download": "https://github.com/DeVelox/talespire-dice/releases/download/0.1.1/talespire-dice.zip",
   "esmodules": [
     "scripts/talespire-dice.js"
   ]
