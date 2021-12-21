@@ -9,7 +9,7 @@
     "pf2e"
   ],
   "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.8.5",
+  "compatibleCoreVersion": "9.238",
   "url": "https://github.com/DeVelox/talespire-dice",
   "manifest": "https://github.com/DeVelox/talespire-dice/raw/main/module.json",
   "download": "https://github.com/DeVelox/talespire-dice/archive/main.zip",
