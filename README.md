@@ -1,4 +1,5 @@
 # Talespire Dice Relay
+## NO LONGER MAINTAINED
 Send Foundry dice roll formulas to Talespire.
 
 ##  Installation
